@@ -12,7 +12,7 @@ def invert_image(image_to_invert):
 
 
 def blur_image(inverted_image):
-    blurred_image = cv2.GaussianBlur(inverted_image, (911,911), 0)
+    blurred_image = cv2.GaussianBlur(inverted_image, (21,21), 0)
     return blurred_image
 
 def display_image(image):
@@ -56,32 +56,14 @@ def display(original_image, sketched_image):
 
 
 
-def choose_image_category():
-    options = ["airplanes", "cars", "ships"]
-    user_input = ""
-    
-    input_message = "Pick an option:\n"
-    for index, item in enumerate(options):
-        input_message += f'{index+1}) {item}\n'
-    
-    input_message += "Your Choice: "
-
-    while user_input.lower() not in options:
-        user_input = input(input_message)
-    return_value = "images\original\\" + user_input + "\\"
-
-    return return_value
-
 
 def main():
 
     # Get image file path from user
-    image_file = choose_image_category()
-    image_file += input("Enter file to pencilize: ")
+    image_file = input("Enter file to pencilize: ")
 
     # Get sketch output file path from user
-    output_file = image_file.replace("original", "sketched")
-    output_file += input("\nEnter the name of the filename for the sketch output:  ")
+    output_file = input("\nEnter the name of the filename for the sketch output:  ")
 
     # Read the photo using opencv
     image = read_photo(image_file)
